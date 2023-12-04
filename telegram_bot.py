@@ -17,7 +17,7 @@ def handle_text(update: Update, context: CallbackContext) -> None:
         update.message.reply_text('Invalid URL. Please send a valid video download link.')
 
 def main() -> None:
-    updater = Updater(token=bot_token)
+    updater = Updater(token=bot_token, use_context=True)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
@@ -25,6 +25,7 @@ def main() -> None:
 
     updater.start_polling()
     updater.idle()
+
 
 if __name__ == '__main__':
     main()
