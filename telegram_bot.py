@@ -1,8 +1,6 @@
-# telegram_bot.py
 import requests
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
-from telegram.ext.filters import Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext, filters
 
 bot_token = '6163881554:AAFg-PjrEpDht6Hq0lfPNOLja4utgoa5hk0'
 
@@ -23,7 +21,7 @@ def main() -> None:
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_text))
+    dispatcher.add_handler(MessageHandler(filters.text & ~filters.command, handle_text))
 
     updater.start_polling()
     updater.idle()
